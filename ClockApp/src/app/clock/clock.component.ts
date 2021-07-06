@@ -9,7 +9,13 @@ import { TimeService } from '../time.service';
 export class ClockComponent implements OnInit {
   currentTime: string | undefined;
 
-  constructor() { }
+  // the function for this.current time
+  constructor(private _timeService: TimeService) {
+    this._timeService.time.subscribe((now: Date) => {
+      this.currentTime = now.toLocaleTimeString('en-GB')
+    })
+  }
+
 
   ngOnInit(): void {
   }
